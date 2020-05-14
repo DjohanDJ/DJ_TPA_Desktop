@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UnderTheSeaDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="UnderTheSeaDatabaseModel.FK__Employee__Depart__286302EC" FromRole="Department" ToRole="Employee" />
+  </EntityType>
+  <EntityContainer Name="UnderTheSeaDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Employees" EntityType="UnderTheSeaDatabaseModel.Employee" />
+    <AssociationSet Name="FK__Employee__Depart__286302EC" Association="UnderTheSeaDatabaseModel.FK__Employee__Depart__286302EC">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <EntitySet Name="Customers" EntityType="UnderTheSeaDatabaseModel.Customer" />
+    <EntitySet Name="RideTypes" EntityType="UnderTheSeaDatabaseModel.RideType" />
+    <EntitySet Name="RideSafeties" EntityType="UnderTheSeaDatabaseModel.RideSafety" />
+    <EntitySet Name="DetailCreations" EntityType="UnderTheSeaDatabaseModel.DetailCreation" />
+    <EntitySet Name="HeaderCreations" EntityType="UnderTheSeaDatabaseModel.HeaderCreation" />
+    <EntitySet Name="Rides" EntityType="UnderTheSeaDatabaseModel.Ride" />
+    <AssociationSet Name="FK__DetailCre__Heade__6DCC4D03" Association="UnderTheSeaDatabaseModel.FK__DetailCre__Heade__6DCC4D03">
+      <End Role="HeaderCreation" EntitySet="HeaderCreations" />
+      <End Role="DetailCreation" EntitySet="DetailCreations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetailCre__RideI__6CD828CA" Association="UnderTheSeaDatabaseModel.FK__DetailCre__RideI__6CD828CA">
+      <End Role="Ride" EntitySet="Rides" />
+      <End Role="DetailCreation" EntitySet="DetailCreations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderCre__Emplo__662B2B3B" Association="UnderTheSeaDatabaseModel.FK__HeaderCre__Emplo__662B2B3B">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HeaderCreation" EntitySet="HeaderCreations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ride__RideSafety__634EBE90" Association="UnderTheSeaDatabaseModel.FK__Ride__RideSafety__634EBE90">
+      <End Role="RideSafety" EntitySet="RideSafeties" />
+      <End Role="Ride" EntitySet="Rides" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ride__RideTypeId__625A9A57" Association="UnderTheSeaDatabaseModel.FK__Ride__RideTypeId__625A9A57">
+      <End Role="RideType" EntitySet="RideTypes" />
+      <End Role="Ride" EntitySet="Rides" />
+    </AssociationSet>
+    <EntitySet Name="HeaderResponses" EntityType="UnderTheSeaDatabaseModel.HeaderResponse" />
+    <AssociationSet Name="FK__HeaderRes__Emplo__756D6ECB" Association="UnderTheSeaDatabaseModel.FK__HeaderRes__Emplo__756D6ECB">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HeaderResponse" EntitySet="HeaderResponses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderRes__RideI__76619304" Association="UnderTheSeaDatabaseModel.FK__HeaderRes__RideI__76619304">
+      <End Role="Ride" EntitySet="Rides" />
+      <End Role="HeaderResponse" EntitySet="HeaderResponses" />
+    </AssociationSet>
+    <EntitySet Name="HeaderConstructions" EntityType="UnderTheSeaDatabaseModel.HeaderConstruction" />
+    <AssociationSet Name="FK__HeaderCon__Emplo__19AACF41" Association="UnderTheSeaDatabaseModel.FK__HeaderCon__Emplo__19AACF41">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HeaderConstruction" EntitySet="HeaderConstructions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderCon__RideI__1A9EF37A" Association="UnderTheSeaDatabaseModel.FK__HeaderCon__RideI__1A9EF37A">
+      <End Role="Ride" EntitySet="Rides" />
+      <End Role="HeaderConstruction" EntitySet="HeaderConstructions" />
+    </AssociationSet>
+    <EntitySet Name="HeaderMaintenances" EntityType="UnderTheSeaDatabaseModel.HeaderMaintenance" />
+    <AssociationSet Name="FK__HeaderMai__Emplo__2EA5EC27" Association="UnderTheSeaDatabaseModel.FK__HeaderMai__Emplo__2EA5EC27">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HeaderMaintenance" EntitySet="HeaderMaintenances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderMai__RideI__2F9A1060" Association="UnderTheSeaDatabaseModel.FK__HeaderMai__RideI__2F9A1060">
+      <End Role="Ride" EntitySet="Rides" />
+      <End Role="HeaderMaintenance" EntitySet="HeaderMaintenances" />
+    </AssociationSet>
+    <EntitySet Name="ItemPieces" EntityType="UnderTheSeaDatabaseModel.ItemPiece" />
+    <EntitySet Name="HeaderFundRequests" EntityType="UnderTheSeaDatabaseModel.HeaderFundRequest" />
+    <AssociationSet Name="FK__HeaderFun__Emplo__67DE6983" Association="UnderTheSeaDatabaseModel.FK__HeaderFun__Emplo__67DE6983">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HeaderFundRequest" EntitySet="HeaderFundRequests" />
+    </AssociationSet>
+    <EntitySet Name="HeaderPurchaseRequests" EntityType="UnderTheSeaDatabaseModel.HeaderPurchaseRequest" />
+    <AssociationSet Name="FK__HeaderPur__Emplo__7BE56230" Association="UnderTheSeaDatabaseModel.FK__HeaderPur__Emplo__7BE56230">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HeaderPurchaseRequest" EntitySet="HeaderPurchaseRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderPur__ItemP__7AF13DF7" Association="UnderTheSeaDatabaseModel.FK__HeaderPur__ItemP__7AF13DF7">
+      <End Role="ItemPiece" EntitySet="ItemPieces" />
+      <End Role="HeaderPurchaseRequest" EntitySet="HeaderPurchaseRequests" />
+    </AssociationSet>
+    <EntitySet Name="Firings" EntityType="UnderTheSeaDatabaseModel.Firing" />
+    <AssociationSet Name="FK__Firing__employee__0E04126B" Association="UnderTheSeaDatabaseModel.FK__Firing__employee__0E04126B">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Firing" EntitySet="Firings" />
+    </AssociationSet>
+    <EntitySet Name="RequestRaiseSalaries" EntityType="UnderTheSeaDatabaseModel.RequestRaiseSalary" />
+    <AssociationSet Name="FK__RequestRa__Emplo__10E07F16" Association="UnderTheSeaDatabaseModel.FK__RequestRa__Emplo__10E07F16">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="RequestRaiseSalary" EntitySet="RequestRaiseSalaries" />
+    </AssociationSet>
+    <EntitySet Name="LeavingPermissions" EntityType="UnderTheSeaDatabaseModel.LeavingPermission" />
+    <AssociationSet Name="FK__LeavingPe__Emplo__13BCEBC1" Association="UnderTheSeaDatabaseModel.FK__LeavingPe__Emplo__13BCEBC1">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="LeavingPermission" EntitySet="LeavingPermissions" />
+    </AssociationSet>
+    <EntitySet Name="ResignRequests" EntityType="UnderTheSeaDatabaseModel.ResignRequest" />
+    <AssociationSet Name="FK__ResignReq__Emplo__1699586C" Association="UnderTheSeaDatabaseModel.FK__ResignReq__Emplo__1699586C">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="ResignRequest" EntitySet="ResignRequests" />
+    </AssociationSet>
+    <EntitySet Name="Foods" EntityType="UnderTheSeaDatabaseModel.Food" />
+    <EntitySet Name="OrderDetails" EntityType="UnderTheSeaDatabaseModel.OrderDetail" />
+    <AssociationSet Name="FK__OrderDeta__FoodI__220B0B18" Association="UnderTheSeaDatabaseModel.FK__OrderDeta__FoodI__220B0B18">
+      <End Role="Food" EntitySet="Foods" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <EntitySet Name="OrderRequests" EntityType="UnderTheSeaDatabaseModel.OrderRequest" />
+    <AssociationSet Name="FK__OrderRequ__Custo__1B5E0D89" Association="UnderTheSeaDatabaseModel.FK__OrderRequ__Custo__1B5E0D89">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="OrderRequest" EntitySet="OrderRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderRequ__Emplo__1C5231C2" Association="UnderTheSeaDatabaseModel.FK__OrderRequ__Emplo__1C5231C2">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="OrderRequest" EntitySet="OrderRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__26CFC035" Association="UnderTheSeaDatabaseModel.FK__OrderDeta__Order__26CFC035">
+      <End Role="OrderRequest" EntitySet="OrderRequests" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <EntitySet Name="Tables" EntityType="UnderTheSeaDatabaseModel.Table" />
+    <AssociationSet Name="FK__OrderRequ__Table__27C3E46E" Association="UnderTheSeaDatabaseModel.FK__OrderRequ__Table__27C3E46E">
+      <End Role="Table" EntitySet="Tables" />
+      <End Role="OrderRequest" EntitySet="OrderRequests" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeFullname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeePassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeePhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeGender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="UnderTheSeaDatabaseModel.FK__Employee__Depart__286302EC" FromRole="Employee" ToRole="Department" />
+    <Property Name="EmployeeBannedStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="HeaderCreations" Relationship="UnderTheSeaDatabaseModel.FK__HeaderCre__Emplo__662B2B3B" FromRole="Employee" ToRole="HeaderCreation" />
+    <NavigationProperty Name="HeaderResponses" Relationship="UnderTheSeaDatabaseModel.FK__HeaderRes__Emplo__756D6ECB" FromRole="Employee" ToRole="HeaderResponse" />
+    <NavigationProperty Name="HeaderConstructions" Relationship="UnderTheSeaDatabaseModel.FK__HeaderCon__Emplo__19AACF41" FromRole="Employee" ToRole="HeaderConstruction" />
+    <NavigationProperty Name="HeaderMaintenances" Relationship="UnderTheSeaDatabaseModel.FK__HeaderMai__Emplo__2EA5EC27" FromRole="Employee" ToRole="HeaderMaintenance" />
+    <NavigationProperty Name="HeaderFundRequests" Relationship="UnderTheSeaDatabaseModel.FK__HeaderFun__Emplo__67DE6983" FromRole="Employee" ToRole="HeaderFundRequest" />
+    <NavigationProperty Name="HeaderPurchaseRequests" Relationship="UnderTheSeaDatabaseModel.FK__HeaderPur__Emplo__7BE56230" FromRole="Employee" ToRole="HeaderPurchaseRequest" />
+    <Property Name="EmployeeSalary" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Firings" Relationship="UnderTheSeaDatabaseModel.FK__Firing__employee__0E04126B" FromRole="Employee" ToRole="Firing" />
+    <NavigationProperty Name="RequestRaiseSalaries" Relationship="UnderTheSeaDatabaseModel.FK__RequestRa__Emplo__10E07F16" FromRole="Employee" ToRole="RequestRaiseSalary" />
+    <NavigationProperty Name="LeavingPermissions" Relationship="UnderTheSeaDatabaseModel.FK__LeavingPe__Emplo__13BCEBC1" FromRole="Employee" ToRole="LeavingPermission" />
+    <NavigationProperty Name="ResignRequests" Relationship="UnderTheSeaDatabaseModel.FK__ResignReq__Emplo__1699586C" FromRole="Employee" ToRole="ResignRequest" />
+    <NavigationProperty Name="OrderRequests" Relationship="UnderTheSeaDatabaseModel.FK__OrderRequ__Emplo__1C5231C2" FromRole="Employee" ToRole="OrderRequest" />
+  </EntityType>
+  <Association Name="FK__Employee__Depart__286302EC">
+    <End Type="UnderTheSeaDatabaseModel.Department" Role="Department" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerFullname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerPhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerGender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OrderRequests" Relationship="UnderTheSeaDatabaseModel.FK__OrderRequ__Custo__1B5E0D89" FromRole="Customer" ToRole="OrderRequest" />
+  </EntityType>
+  <EntityType Name="RideType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="RideTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rides" Relationship="UnderTheSeaDatabaseModel.FK__Ride__RideTypeId__625A9A57" FromRole="RideType" ToRole="Ride" />
+  </EntityType>
+  <EntityType Name="RideSafety">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RideSafetyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rides" Relationship="UnderTheSeaDatabaseModel.FK__Ride__RideSafety__634EBE90" FromRole="RideSafety" ToRole="Ride" />
+  </EntityType>
+  <EntityType Name="DetailCreation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HeaderId" Type="Int32" Nullable="false" />
+    <Property Name="RideId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HeaderCreation" Relationship="UnderTheSeaDatabaseModel.FK__DetailCre__Heade__6DCC4D03" FromRole="DetailCreation" ToRole="HeaderCreation" />
+    <NavigationProperty Name="Ride" Relationship="UnderTheSeaDatabaseModel.FK__DetailCre__RideI__6CD828CA" FromRole="DetailCreation" ToRole="Ride" />
+  </EntityType>
+  <EntityType Name="HeaderCreation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DetailCreations" Relationship="UnderTheSeaDatabaseModel.FK__DetailCre__Heade__6DCC4D03" FromRole="HeaderCreation" ToRole="DetailCreation" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__HeaderCre__Emplo__662B2B3B" FromRole="HeaderCreation" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Ride">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RideName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RideDurabilityCheckPerWeek" Type="Int32" Nullable="false" />
+    <Property Name="RideStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RideMaintainStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RideTypeId" Type="Int32" Nullable="false" />
+    <Property Name="RideSafetyId" Type="Int32" Nullable="false" />
+    <Property Name="RideForce" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetailCreations" Relationship="UnderTheSeaDatabaseModel.FK__DetailCre__RideI__6CD828CA" FromRole="Ride" ToRole="DetailCreation" />
+    <NavigationProperty Name="RideSafety" Relationship="UnderTheSeaDatabaseModel.FK__Ride__RideSafety__634EBE90" FromRole="Ride" ToRole="RideSafety" />
+    <NavigationProperty Name="RideType" Relationship="UnderTheSeaDatabaseModel.FK__Ride__RideTypeId__625A9A57" FromRole="Ride" ToRole="RideType" />
+    <NavigationProperty Name="HeaderResponses" Relationship="UnderTheSeaDatabaseModel.FK__HeaderRes__RideI__76619304" FromRole="Ride" ToRole="HeaderResponse" />
+    <NavigationProperty Name="HeaderConstructions" Relationship="UnderTheSeaDatabaseModel.FK__HeaderCon__RideI__1A9EF37A" FromRole="Ride" ToRole="HeaderConstruction" />
+    <NavigationProperty Name="HeaderMaintenances" Relationship="UnderTheSeaDatabaseModel.FK__HeaderMai__RideI__2F9A1060" FromRole="Ride" ToRole="HeaderMaintenance" />
+  </EntityType>
+  <Association Name="FK__DetailCre__Heade__6DCC4D03">
+    <End Type="UnderTheSeaDatabaseModel.HeaderCreation" Role="HeaderCreation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.DetailCreation" Role="DetailCreation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeaderCreation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailCreation">
+        <PropertyRef Name="HeaderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetailCre__RideI__6CD828CA">
+    <End Type="UnderTheSeaDatabaseModel.Ride" Role="Ride" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.DetailCreation" Role="DetailCreation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ride">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailCreation">
+        <PropertyRef Name="RideId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderCre__Emplo__662B2B3B">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderCreation" Role="HeaderCreation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderCreation">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ride__RideSafety__634EBE90">
+    <End Type="UnderTheSeaDatabaseModel.RideSafety" Role="RideSafety" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.Ride" Role="Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RideSafety">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ride">
+        <PropertyRef Name="RideSafetyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ride__RideTypeId__625A9A57">
+    <End Type="UnderTheSeaDatabaseModel.RideType" Role="RideType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.Ride" Role="Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RideType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ride">
+        <PropertyRef Name="RideTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HeaderResponse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResponseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ResponseStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="RideId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__HeaderRes__Emplo__756D6ECB" FromRole="HeaderResponse" ToRole="Employee" />
+    <NavigationProperty Name="Ride" Relationship="UnderTheSeaDatabaseModel.FK__HeaderRes__RideI__76619304" FromRole="HeaderResponse" ToRole="Ride" />
+  </EntityType>
+  <Association Name="FK__HeaderRes__Emplo__756D6ECB">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderResponse" Role="HeaderResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderResponse">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderRes__RideI__76619304">
+    <End Type="UnderTheSeaDatabaseModel.Ride" Role="Ride" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderResponse" Role="HeaderResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ride">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderResponse">
+        <PropertyRef Name="RideId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HeaderConstruction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="RideId" Type="Int32" Nullable="false" />
+    <Property Name="ConstructionRequestDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__HeaderCon__Emplo__19AACF41" FromRole="HeaderConstruction" ToRole="Employee" />
+    <NavigationProperty Name="Ride" Relationship="UnderTheSeaDatabaseModel.FK__HeaderCon__RideI__1A9EF37A" FromRole="HeaderConstruction" ToRole="Ride" />
+  </EntityType>
+  <Association Name="FK__HeaderCon__Emplo__19AACF41">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderConstruction" Role="HeaderConstruction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderConstruction">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderCon__RideI__1A9EF37A">
+    <End Type="UnderTheSeaDatabaseModel.Ride" Role="Ride" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderConstruction" Role="HeaderConstruction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ride">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderConstruction">
+        <PropertyRef Name="RideId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HeaderMaintenance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="RideId" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__HeaderMai__Emplo__2EA5EC27" FromRole="HeaderMaintenance" ToRole="Employee" />
+    <NavigationProperty Name="Ride" Relationship="UnderTheSeaDatabaseModel.FK__HeaderMai__RideI__2F9A1060" FromRole="HeaderMaintenance" ToRole="Ride" />
+  </EntityType>
+  <Association Name="FK__HeaderMai__Emplo__2EA5EC27">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderMaintenance" Role="HeaderMaintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderMaintenance">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderMai__RideI__2F9A1060">
+    <End Type="UnderTheSeaDatabaseModel.Ride" Role="Ride" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderMaintenance" Role="HeaderMaintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ride">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderMaintenance">
+        <PropertyRef Name="RideId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ItemPiece">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemPrice" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HeaderPurchaseRequests" Relationship="UnderTheSeaDatabaseModel.FK__HeaderPur__ItemP__7AF13DF7" FromRole="ItemPiece" ToRole="HeaderPurchaseRequest" />
+  </EntityType>
+  <EntityType Name="HeaderFundRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="PriceValue" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ResponseStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__HeaderFun__Emplo__67DE6983" FromRole="HeaderFundRequest" ToRole="Employee" />
+    <Property Name="PurchaseId" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__HeaderFun__Emplo__67DE6983">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderFundRequest" Role="HeaderFundRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderFundRequest">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HeaderPurchaseRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ResponseStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemPieceId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__HeaderPur__Emplo__7BE56230" FromRole="HeaderPurchaseRequest" ToRole="Employee" />
+    <NavigationProperty Name="ItemPiece" Relationship="UnderTheSeaDatabaseModel.FK__HeaderPur__ItemP__7AF13DF7" FromRole="HeaderPurchaseRequest" ToRole="ItemPiece" />
+  </EntityType>
+  <Association Name="FK__HeaderPur__Emplo__7BE56230">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderPurchaseRequest" Role="HeaderPurchaseRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderPurchaseRequest">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderPur__ItemP__7AF13DF7">
+    <End Type="UnderTheSeaDatabaseModel.ItemPiece" Role="ItemPiece" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderPurchaseRequest" Role="HeaderPurchaseRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemPiece">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderPurchaseRequest">
+        <PropertyRef Name="ItemPieceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Firing">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employeeId" Type="Int32" Nullable="false" />
+    <Property Name="fireDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__Firing__employee__0E04126B" FromRole="Firing" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK__Firing__employee__0E04126B">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.Firing" Role="Firing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Firing">
+        <PropertyRef Name="employeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RequestRaiseSalary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeRaisePrice" Type="Int32" Nullable="false" />
+    <Property Name="ResponseStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeTargetId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__RequestRa__Emplo__10E07F16" FromRole="RequestRaiseSalary" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK__RequestRa__Emplo__10E07F16">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.RequestRaiseSalary" Role="RequestRaiseSalary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestRaiseSalary">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LeavingPermission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Reason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__LeavingPe__Emplo__13BCEBC1" FromRole="LeavingPermission" ToRole="Employee" />
+    <Property Name="ResponseStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__LeavingPe__Emplo__13BCEBC1">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.LeavingPermission" Role="LeavingPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeavingPermission">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ResignRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="ResignLetter" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ResignDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ResignResponse" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__ResignReq__Emplo__1699586C" FromRole="ResignRequest" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK__ResignReq__Emplo__1699586C">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.ResignRequest" Role="ResignRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResignRequest">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FoodName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FoodDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FoodPrice" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderDetails" Relationship="UnderTheSeaDatabaseModel.FK__OrderDeta__FoodI__220B0B18" FromRole="Food" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FoodId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Food" Relationship="UnderTheSeaDatabaseModel.FK__OrderDeta__FoodI__220B0B18" FromRole="OrderDetail" ToRole="Food" />
+    <NavigationProperty Name="OrderRequest" Relationship="UnderTheSeaDatabaseModel.FK__OrderDeta__Order__26CFC035" FromRole="OrderDetail" ToRole="OrderRequest" />
+  </EntityType>
+  <Association Name="FK__OrderDeta__FoodI__220B0B18">
+    <End Type="UnderTheSeaDatabaseModel.Food" Role="Food" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="FoodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OrderRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TableNumber" Type="Int32" Nullable="false" />
+    <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FeedBackCustomer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="UnderTheSeaDatabaseModel.FK__OrderRequ__Custo__1B5E0D89" FromRole="OrderRequest" ToRole="Customer" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__OrderRequ__Emplo__1C5231C2" FromRole="OrderRequest" ToRole="Employee" />
+    <NavigationProperty Name="OrderDetails" Relationship="UnderTheSeaDatabaseModel.FK__OrderDeta__Order__26CFC035" FromRole="OrderRequest" ToRole="OrderDetail" />
+    <NavigationProperty Name="Table" Relationship="UnderTheSeaDatabaseModel.FK__OrderRequ__Table__27C3E46E" FromRole="OrderRequest" ToRole="Table" />
+  </EntityType>
+  <Association Name="FK__OrderRequ__Custo__1B5E0D89">
+    <End Type="UnderTheSeaDatabaseModel.Customer" Role="Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderRequest">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderRequ__Emplo__1C5231C2">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderRequest">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__26CFC035">
+    <End Type="UnderTheSeaDatabaseModel.OrderRequest" Role="OrderRequest" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderRequest">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TableStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OrderRequests" Relationship="UnderTheSeaDatabaseModel.FK__OrderRequ__Table__27C3E46E" FromRole="Table" ToRole="OrderRequest" />
+  </EntityType>
+  <Association Name="FK__OrderRequ__Table__27C3E46E">
+    <End Type="UnderTheSeaDatabaseModel.Table" Role="Table" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderRequest">
+        <PropertyRef Name="TableNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

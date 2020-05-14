@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UnderTheSeaDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerFullname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerPhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerGender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerUsername" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerPassword" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetailCreation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HeaderId" Type="int" Nullable="false" />
+    <Property Name="RideId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeUsername" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeFullname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeePassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeePhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeGender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartmentId" Type="int" Nullable="false" />
+    <Property Name="EmployeeBannedStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeSalary" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Firing">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employeeId" Type="int" Nullable="false" />
+    <Property Name="fireDescription" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FoodName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FoodDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FoodPrice" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HeaderConstruction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="RideId" Type="int" Nullable="false" />
+    <Property Name="ConstructionRequestDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HeaderCreation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HeaderFundRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="PriceValue" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ResponseStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PurchaseId" Type="int" />
+  </EntityType>
+  <EntityType Name="HeaderMaintenance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="RideId" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="date" Nullable="false" />
+    <Property Name="EndTime" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HeaderPurchaseRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="ResponseStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemPieceId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HeaderResponse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResponseDate" Type="datetime" Nullable="false" />
+    <Property Name="ResponseStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="RideId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemPiece">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemPrice" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeavingPermission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="Reason" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ResponseStatus" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FoodId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="TableNumber" Type="int" Nullable="false" />
+    <Property Name="OrderStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FeedBackCustomer" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RequestRaiseSalary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="EmployeeRaisePrice" Type="int" Nullable="false" />
+    <Property Name="ResponseStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeTargetId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResignRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="ResignLetter" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ResignDate" Type="date" Nullable="false" />
+    <Property Name="ResignResponse" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ride">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RideName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RideDurabilityCheckPerWeek" Type="int" Nullable="false" />
+    <Property Name="RideStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RideMaintainStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RideTypeId" Type="int" Nullable="false" />
+    <Property Name="RideSafetyId" Type="int" Nullable="false" />
+    <Property Name="RideForce" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RideSafety">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RideSafetyName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RideType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RideTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TableStatus" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__DetailCre__Heade__6DCC4D03">
+    <End Role="HeaderCreation" Type="Self.HeaderCreation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DetailCreation" Type="Self.DetailCreation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeaderCreation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailCreation">
+        <PropertyRef Name="HeaderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetailCre__RideI__6CD828CA">
+    <End Role="Ride" Type="Self.Ride" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DetailCreation" Type="Self.DetailCreation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ride">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailCreation">
+        <PropertyRef Name="RideId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__Depart__286302EC">
+    <End Role="Department" Type="Self.Department" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Firing__employee__0E04126B">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Firing" Type="Self.Firing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Firing">
+        <PropertyRef Name="employeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderCon__Emplo__19AACF41">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderConstruction" Type="Self.HeaderConstruction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderConstruction">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderCon__RideI__1A9EF37A">
+    <End Role="Ride" Type="Self.Ride" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderConstruction" Type="Self.HeaderConstruction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ride">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderConstruction">
+        <PropertyRef Name="RideId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderCre__Emplo__662B2B3B">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderCreation" Type="Self.HeaderCreation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderCreation">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderFun__Emplo__67DE6983">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderFundRequest" Type="Self.HeaderFundRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderFundRequest">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderMai__Emplo__2EA5EC27">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderMaintenance" Type="Self.HeaderMaintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderMaintenance">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderMai__RideI__2F9A1060">
+    <End Role="Ride" Type="Self.Ride" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderMaintenance" Type="Self.HeaderMaintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ride">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderMaintenance">
+        <PropertyRef Name="RideId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderPur__Emplo__7BE56230">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderPurchaseRequest" Type="Self.HeaderPurchaseRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderPurchaseRequest">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderPur__ItemP__7AF13DF7">
+    <End Role="ItemPiece" Type="Self.ItemPiece" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderPurchaseRequest" Type="Self.HeaderPurchaseRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemPiece">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderPurchaseRequest">
+        <PropertyRef Name="ItemPieceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderRes__Emplo__756D6ECB">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderResponse" Type="Self.HeaderResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderResponse">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderRes__RideI__76619304">
+    <End Role="Ride" Type="Self.Ride" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderResponse" Type="Self.HeaderResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ride">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderResponse">
+        <PropertyRef Name="RideId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LeavingPe__Emplo__13BCEBC1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LeavingPermission" Type="Self.LeavingPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeavingPermission">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__FoodI__220B0B18">
+    <End Role="Food" Type="Self.Food" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="FoodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__26CFC035">
+    <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderRequest">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderRequ__Custo__1B5E0D89">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderRequest">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderRequ__Emplo__1C5231C2">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderRequest">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderRequ__Table__27C3E46E">
+    <End Role="Table" Type="Self.Table" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderRequest">
+        <PropertyRef Name="TableNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RequestRa__Emplo__10E07F16">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RequestRaiseSalary" Type="Self.RequestRaiseSalary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestRaiseSalary">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ResignReq__Emplo__1699586C">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ResignRequest" Type="Self.ResignRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResignRequest">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ride__RideSafety__634EBE90">
+    <End Role="RideSafety" Type="Self.RideSafety" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ride" Type="Self.Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RideSafety">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ride">
+        <PropertyRef Name="RideSafetyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ride__RideTypeId__625A9A57">
+    <End Role="RideType" Type="Self.RideType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ride" Type="Self.Ride" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RideType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ride">
+        <PropertyRef Name="RideTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UnderTheSeaDatabaseModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetailCreation" EntityType="Self.DetailCreation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Firing" EntityType="Self.Firing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderConstruction" EntityType="Self.HeaderConstruction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderCreation" EntityType="Self.HeaderCreation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderFundRequest" EntityType="Self.HeaderFundRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderMaintenance" EntityType="Self.HeaderMaintenance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderPurchaseRequest" EntityType="Self.HeaderPurchaseRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderResponse" EntityType="Self.HeaderResponse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemPiece" EntityType="Self.ItemPiece" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeavingPermission" EntityType="Self.LeavingPermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderRequest" EntityType="Self.OrderRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RequestRaiseSalary" EntityType="Self.RequestRaiseSalary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResignRequest" EntityType="Self.ResignRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ride" EntityType="Self.Ride" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RideSafety" EntityType="Self.RideSafety" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RideType" EntityType="Self.RideType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DetailCre__Heade__6DCC4D03" Association="Self.FK__DetailCre__Heade__6DCC4D03">
+      <End Role="HeaderCreation" EntitySet="HeaderCreation" />
+      <End Role="DetailCreation" EntitySet="DetailCreation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetailCre__RideI__6CD828CA" Association="Self.FK__DetailCre__RideI__6CD828CA">
+      <End Role="Ride" EntitySet="Ride" />
+      <End Role="DetailCreation" EntitySet="DetailCreation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__Depart__286302EC" Association="Self.FK__Employee__Depart__286302EC">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Firing__employee__0E04126B" Association="Self.FK__Firing__employee__0E04126B">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Firing" EntitySet="Firing" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderCon__Emplo__19AACF41" Association="Self.FK__HeaderCon__Emplo__19AACF41">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderConstruction" EntitySet="HeaderConstruction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderCon__RideI__1A9EF37A" Association="Self.FK__HeaderCon__RideI__1A9EF37A">
+      <End Role="Ride" EntitySet="Ride" />
+      <End Role="HeaderConstruction" EntitySet="HeaderConstruction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderCre__Emplo__662B2B3B" Association="Self.FK__HeaderCre__Emplo__662B2B3B">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderCreation" EntitySet="HeaderCreation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderFun__Emplo__67DE6983" Association="Self.FK__HeaderFun__Emplo__67DE6983">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderFundRequest" EntitySet="HeaderFundRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderMai__Emplo__2EA5EC27" Association="Self.FK__HeaderMai__Emplo__2EA5EC27">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderMaintenance" EntitySet="HeaderMaintenance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderMai__RideI__2F9A1060" Association="Self.FK__HeaderMai__RideI__2F9A1060">
+      <End Role="Ride" EntitySet="Ride" />
+      <End Role="HeaderMaintenance" EntitySet="HeaderMaintenance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderPur__Emplo__7BE56230" Association="Self.FK__HeaderPur__Emplo__7BE56230">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderPurchaseRequest" EntitySet="HeaderPurchaseRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderPur__ItemP__7AF13DF7" Association="Self.FK__HeaderPur__ItemP__7AF13DF7">
+      <End Role="ItemPiece" EntitySet="ItemPiece" />
+      <End Role="HeaderPurchaseRequest" EntitySet="HeaderPurchaseRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderRes__Emplo__756D6ECB" Association="Self.FK__HeaderRes__Emplo__756D6ECB">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderResponse" EntitySet="HeaderResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderRes__RideI__76619304" Association="Self.FK__HeaderRes__RideI__76619304">
+      <End Role="Ride" EntitySet="Ride" />
+      <End Role="HeaderResponse" EntitySet="HeaderResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LeavingPe__Emplo__13BCEBC1" Association="Self.FK__LeavingPe__Emplo__13BCEBC1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="LeavingPermission" EntitySet="LeavingPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__FoodI__220B0B18" Association="Self.FK__OrderDeta__FoodI__220B0B18">
+      <End Role="Food" EntitySet="Food" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__26CFC035" Association="Self.FK__OrderDeta__Order__26CFC035">
+      <End Role="OrderRequest" EntitySet="OrderRequest" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderRequ__Custo__1B5E0D89" Association="Self.FK__OrderRequ__Custo__1B5E0D89">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="OrderRequest" EntitySet="OrderRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderRequ__Emplo__1C5231C2" Association="Self.FK__OrderRequ__Emplo__1C5231C2">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="OrderRequest" EntitySet="OrderRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderRequ__Table__27C3E46E" Association="Self.FK__OrderRequ__Table__27C3E46E">
+      <End Role="Table" EntitySet="Table" />
+      <End Role="OrderRequest" EntitySet="OrderRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RequestRa__Emplo__10E07F16" Association="Self.FK__RequestRa__Emplo__10E07F16">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="RequestRaiseSalary" EntitySet="RequestRaiseSalary" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ResignReq__Emplo__1699586C" Association="Self.FK__ResignReq__Emplo__1699586C">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="ResignRequest" EntitySet="ResignRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ride__RideSafety__634EBE90" Association="Self.FK__Ride__RideSafety__634EBE90">
+      <End Role="RideSafety" EntitySet="RideSafety" />
+      <End Role="Ride" EntitySet="Ride" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ride__RideTypeId__625A9A57" Association="Self.FK__Ride__RideTypeId__625A9A57">
+      <End Role="RideType" EntitySet="RideType" />
+      <End Role="Ride" EntitySet="Ride" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

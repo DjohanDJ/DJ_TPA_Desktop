@@ -1,0 +1,20 @@
+﻿DJ_TPA_Program
+
+
+winexe
+C#
+.cs
+D:\ASLAB\DJ - TPA Desktop\DJ_TPA\Program\DJ_TPA_Program\DJ_TPA_Program\obj\Debug\
+DJ_TPA_Program
+none
+false
+DEBUG;TRACE
+D:\ASLAB\DJ - TPA Desktop\DJ_TPA\Program\DJ_TPA_Program\DJ_TPA_Program\App.xaml
+55-730566088
+2-1365235478
+116455647801
+18-54058459
+Views\CreateOrderRequestPage.xaml;Views\CreateResignLetterPage.xaml;Views\CreateVisitorBillPage.xaml;Views\CustomerHomePage.xaml;Views\DiningHomePage.xaml;Views\FiringReasonPage.xaml;Views\GiveFeedbackPage.xaml;Views\HRDHomePage.xaml;Views\KitchenHomePage.xaml;Views\ManagerHomePage.xaml;Views\OrderFoodDetailPage.xaml;Views\OrderFoodPage.xaml;Views\RequestGrowthSalaryPage.xaml;Views\RequestLeavingPermissionPage.xaml;Views\SalesMarketingHomePage.xaml;MainWindow.xaml;Views\CalculatePricePurchaseRequestPage.xaml;Views\ChangeCurrentRidePage.xaml;Views\ChangeCurrentRideSafetyPage.xaml;Views\ChangeCurrentRideTypePage.xaml;Views\ChangeMaintainStatusPage.xaml;Views\ChangeProgressStatusPage.xaml;Views\ConstructionHomePage.xaml;Views\CreativeHomePage.xaml;Views\DeleteCurrentRidePage.xaml;Views\FinancialHomePage.xaml;Views\LoginPage.xaml;Views\MaintenanceHomePage.xaml;Views\PlanNewRidePage.xaml;Views\PlanSafetyPage.xaml;Views\PlanTypeRidePage.xaml;Views\PurchaseHomePage.xaml;Views\RegisterCustomerPage.xaml;Views\RegisterEmployeePage.xaml;Views\RequestFundPage.xaml;Views\RequestIdeaToManagerPage.xaml;Views\RequestItemPage.xaml;Views\RequestPurchasePage.xaml;Views\ScheduleMaintainTimePage.xaml;Views\ViewAllEmployeeLeavingRequestPage.xaml;Views\ViewAllEmployeePage.xaml;Views\ViewAllFinancialRequestPage.xaml;Views\ViewAllIncomePage.xaml;Views\ViewAllMaintainSchedulePage.xaml;Views\ViewAllPurchaseRequestPage.xaml;Views\ViewAllRideIdeaPage.xaml;Views\ViewAllRidePage.xaml;Views\ViewFinanceResponsePage.xaml;Views\ViewFoodOrderKitchenPage.xaml;Views\ViewManagerResponsePage.xaml;Views\ViewResignRequestPage.xaml;Views\ViewSalaryRequest.xaml;Views\ViewVisitorBillPage.xaml;Views\ViewVisitorOrderPage.xaml;Views\ViewVisitorTablePage.xaml;
+
+False
+

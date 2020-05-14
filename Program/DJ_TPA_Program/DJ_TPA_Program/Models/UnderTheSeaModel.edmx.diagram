@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2222cc1d561c43c9b1dbe50a7fa1ee12" Name="Diagram1" ZoomLevel="194">
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Department" Width="1.5" PointX="5.875" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Employee" Width="1.5" PointX="9.375" PointY="8.25" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__Employee__Depart__286302EC" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Customer" Width="1.5" PointX="45.375" PointY="5.125" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.RideType" Width="1.5" PointX="5.875" PointY="23.25" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.RideSafety" Width="1.5" PointX="3.125" PointY="19.375" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.DetailCreation" Width="1.5" PointX="5.875" PointY="15.375" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.HeaderCreation" Width="1.5" PointX="5.875" PointY="10.25" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Ride" Width="1.5" PointX="5.875" PointY="18.75" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__DetailCre__Heade__6DCC4D03" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__DetailCre__RideI__6CD828CA" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderCre__Emplo__662B2B3B" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__Ride__RideSafety__634EBE90" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__Ride__RideTypeId__625A9A57" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.HeaderResponse" Width="1.5" PointX="9.375" PointY="14.375" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderRes__Emplo__756D6ECB" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderRes__RideI__76619304" ></AssociationConnector>
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.HeaderConstruction" Width="1.5" PointX="12.375" PointY="13.875" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderCon__Emplo__19AACF41" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderCon__RideI__1A9EF37A" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.HeaderMaintenance" Width="1.5" PointX="15.125" PointY="13.25" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderMai__Emplo__2EA5EC27" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderMai__RideI__2F9A1060" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.ItemPiece" Width="1.5" PointX="18.125" PointY="17" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.HeaderFundRequest" Width="1.5" PointX="20.875" PointY="11.125" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderFun__Emplo__67DE6983" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.HeaderPurchaseRequest" Width="1.5" PointX="18" PointY="12.375" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderPur__Emplo__7BE56230" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderPur__ItemP__7AF13DF7" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Firing" Width="1.5" PointX="23.25" PointY="10.75" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__Firing__employee__0E04126B" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.RequestRaiseSalary" Width="1.5" PointX="25.75" PointY="10.25" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__RequestRa__Emplo__10E07F16" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.LeavingPermission" Width="1.5" PointX="27.875" PointY="9.375" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__LeavingPe__Emplo__13BCEBC1" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.ResignRequest" Width="1.5" PointX="30.375" PointY="8.5" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__ResignReq__Emplo__1699586C" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Food" Width="1.5" PointX="30" PointY="14.125" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.OrderDetail" Width="1.5" PointX="32.875" PointY="11.5" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__OrderDeta__FoodI__220B0B18" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.OrderRequest" Width="1.5" PointX="32.625" PointY="7.375" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__OrderRequ__Custo__1B5E0D89" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__OrderRequ__Emplo__1C5231C2" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__OrderDeta__Order__26CFC035" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Table" Width="1.5" PointX="37" PointY="11.5" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__OrderRequ__Table__27C3E46E" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

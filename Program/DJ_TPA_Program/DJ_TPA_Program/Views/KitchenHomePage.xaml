@@ -1,0 +1,77 @@
+﻿<Page x:Class="DJ_TPA_Program.Views.KitchenHomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DJ_TPA_Program.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="500"
+      Title="KitchenHomePage">
+
+    <Grid Background="#FFB79898">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="30" 
+                   Text="Under The Sea" Grid.ColumnSpan="3" Margin="0,0,0,15" />
+        <TextBlock Grid.Column="1" Grid.Row="2" FontSize="20" 
+                   Text="Kitchen Room Department" Grid.ColumnSpan="3" Margin="0,0,0,10"/>
+        <TextBlock x:Name="userLabelText" Grid.Column="1" Grid.Row="3" FontSize="20" 
+                   Text="Welcome User" Grid.ColumnSpan="3" Margin="0,0,0,10"/>
+
+        <!--Plan New Ride-->
+
+        <Button x:Name="planNewRideButton" Content="Send Purchase Request" 
+                Grid.Column="1" Grid.Row="4" Padding="5"
+                Margin="0,0,15,15" Click="DoSendPurchaseRequest" />
+
+        <!--Change Current Ride-->
+
+        <Button x:Name="changeCurrentRideButton" Content="View Visitor Order" 
+                Grid.Column="2" Grid.Row="4" Padding="5"
+                Margin="0,0,15,15" Click="DoViewVisitorOrder" />
+
+        <!--Plan New Ride-->
+
+        <Button x:Name="planaNewRideButton" Content="Create Leaving Permission" 
+                Grid.Column="1" Grid.Row="7" Padding="5"
+                Margin="0,0,15,15" Click="DoLeavingPermission" />
+
+        <!--Change Current Ride-->
+
+        <Button x:Name="changeaCurrentRideButton" Content="Create Resign Letter" 
+                Grid.Column="2" Grid.Row="7" Padding="5"
+                Margin="0,0,15,15" Click="DoResignLetter" />
+
+        <!--Logout-->
+
+        <Button x:Name="logoutButton" Content="Logout" 
+                Grid.Column="1" Grid.Row="8" Padding="5"
+                Margin="0,0,15,15" Click="DoLogout" />
+
+
+    </Grid>
+</Page>
