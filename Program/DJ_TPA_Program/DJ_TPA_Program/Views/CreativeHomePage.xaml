@@ -90,6 +90,11 @@
                 Grid.Column="2" Grid.Row="6" Padding="5"
                 Margin="0,0,15,15" Click="DoViewManagerResponse" />
 
+        <Button x:Name="viewManagerResponseButtona" Content="Plan New Attraction" 
+                Grid.Column="3" Grid.Row="6" Padding="5"
+                Margin="0,0,15,15" Click="DoPlanNewAttraction" />
+
+
         <!--Plan New Ride-->
 
         <Button x:Name="planaNewRideButton" Content="Create Leaving Permission" 

@@ -127,6 +127,26 @@
       <End Role="Table" EntitySet="Tables" />
       <End Role="OrderRequest" EntitySet="OrderRequests" />
     </AssociationSet>
+    <EntitySet Name="Attractions" EntityType="UnderTheSeaDatabaseModel.Attraction" />
+    <EntitySet Name="HeaderAttractions" EntityType="UnderTheSeaDatabaseModel.HeaderAttraction" />
+    <AssociationSet Name="FK__HeaderAtt__Attra__4830B400" Association="UnderTheSeaDatabaseModel.FK__HeaderAtt__Attra__4830B400">
+      <End Role="Attraction" EntitySet="Attractions" />
+      <End Role="HeaderAttraction" EntitySet="HeaderAttractions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderAtt__Emplo__473C8FC7" Association="UnderTheSeaDatabaseModel.FK__HeaderAtt__Emplo__473C8FC7">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HeaderAttraction" EntitySet="HeaderAttractions" />
+    </AssociationSet>
+    <EntitySet Name="HeaderIngredients" EntityType="UnderTheSeaDatabaseModel.HeaderIngredient" />
+    <EntitySet Name="Ingredients" EntityType="UnderTheSeaDatabaseModel.Ingredient" />
+    <AssociationSet Name="FK__HeaderIng__Emplo__6E565CE8" Association="UnderTheSeaDatabaseModel.FK__HeaderIng__Emplo__6E565CE8">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HeaderIngredient" EntitySet="HeaderIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderIng__Ingre__6D6238AF" Association="UnderTheSeaDatabaseModel.FK__HeaderIng__Ingre__6D6238AF">
+      <End Role="Ingredient" EntitySet="Ingredients" />
+      <End Role="HeaderIngredient" EntitySet="HeaderIngredients" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Employee">
     <Key>
@@ -155,6 +175,8 @@
     <NavigationProperty Name="LeavingPermissions" Relationship="UnderTheSeaDatabaseModel.FK__LeavingPe__Emplo__13BCEBC1" FromRole="Employee" ToRole="LeavingPermission" />
     <NavigationProperty Name="ResignRequests" Relationship="UnderTheSeaDatabaseModel.FK__ResignReq__Emplo__1699586C" FromRole="Employee" ToRole="ResignRequest" />
     <NavigationProperty Name="OrderRequests" Relationship="UnderTheSeaDatabaseModel.FK__OrderRequ__Emplo__1C5231C2" FromRole="Employee" ToRole="OrderRequest" />
+    <NavigationProperty Name="HeaderAttractions" Relationship="UnderTheSeaDatabaseModel.FK__HeaderAtt__Emplo__473C8FC7" FromRole="Employee" ToRole="HeaderAttraction" />
+    <NavigationProperty Name="HeaderIngredients" Relationship="UnderTheSeaDatabaseModel.FK__HeaderIng__Emplo__6E565CE8" FromRole="Employee" ToRole="HeaderIngredient" />
   </EntityType>
   <Association Name="FK__Employee__Depart__286302EC">
     <End Type="UnderTheSeaDatabaseModel.Department" Role="Department" Multiplicity="1">
@@ -717,6 +739,103 @@
       </Principal>
       <Dependent Role="OrderRequest">
         <PropertyRef Name="TableNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Attraction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttractionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DurationInDays" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="HeaderAttractions" Relationship="UnderTheSeaDatabaseModel.FK__HeaderAtt__Attra__4830B400" FromRole="Attraction" ToRole="HeaderAttraction" />
+  </EntityType>
+  <EntityType Name="HeaderAttraction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AttractionId" Type="Int32" Nullable="false" />
+    <Property Name="Area_Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Attraction" Relationship="UnderTheSeaDatabaseModel.FK__HeaderAtt__Attra__4830B400" FromRole="HeaderAttraction" ToRole="Attraction" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__HeaderAtt__Emplo__473C8FC7" FromRole="HeaderAttraction" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK__HeaderAtt__Attra__4830B400">
+    <End Type="UnderTheSeaDatabaseModel.Attraction" Role="Attraction" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderAttraction" Role="HeaderAttraction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attraction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderAttraction">
+        <PropertyRef Name="AttractionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderAtt__Emplo__473C8FC7">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderAttraction" Role="HeaderAttraction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderAttraction">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HeaderIngredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IngredientId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="UnderTheSeaDatabaseModel.FK__HeaderIng__Emplo__6E565CE8" FromRole="HeaderIngredient" ToRole="Employee" />
+    <NavigationProperty Name="Ingredient" Relationship="UnderTheSeaDatabaseModel.FK__HeaderIng__Ingre__6D6238AF" FromRole="HeaderIngredient" ToRole="Ingredient" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IngredientName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HeaderIngredients" Relationship="UnderTheSeaDatabaseModel.FK__HeaderIng__Ingre__6D6238AF" FromRole="Ingredient" ToRole="HeaderIngredient" />
+  </EntityType>
+  <Association Name="FK__HeaderIng__Emplo__6E565CE8">
+    <End Type="UnderTheSeaDatabaseModel.Employee" Role="Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderIngredient" Role="HeaderIngredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderIngredient">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderIng__Ingre__6D6238AF">
+    <End Type="UnderTheSeaDatabaseModel.Ingredient" Role="Ingredient" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UnderTheSeaDatabaseModel.HeaderIngredient" Role="HeaderIngredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderIngredient">
+        <PropertyRef Name="IngredientId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

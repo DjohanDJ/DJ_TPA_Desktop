@@ -47,5 +47,9 @@ namespace DJ_TPA_Program.Models
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderRequest> OrderRequests { get; set; }
         public virtual DbSet<Table> Tables { get; set; }
+        public virtual DbSet<Attraction> Attractions { get; set; }
+        public virtual DbSet<HeaderAttraction> HeaderAttractions { get; set; }
+        public virtual DbSet<HeaderIngredient> HeaderIngredients { get; set; }
+        public virtual DbSet<Ingredient> Ingredients { get; set; }
     }
 }

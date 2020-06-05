@@ -44,6 +44,12 @@ namespace DJ_TPA_Program.Views
             this.NavigationService.Navigate(orderReqPage);
         }
 
+        private void DoInsertIngredient(object sender, RoutedEventArgs e)
+        {
+            InsertIngredientPage inIngPage = new InsertIngredientPage();
+            this.NavigationService.Navigate(inIngPage);
+        }
+
         private void DoLeavingPermission(object sender, RoutedEventArgs e)
         {
             RequestLeavingPermissionPage reqLeaving = new RequestLeavingPermissionPage();

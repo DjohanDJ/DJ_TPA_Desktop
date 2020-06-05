@@ -42,6 +42,12 @@ namespace DJ_TPA_Program.Views
             this.NavigationService.Navigate(changeCurrentRidePage);
         }
 
+        private void DoPlanNewAttraction(object sender, RoutedEventArgs e)
+        {
+            PlanNewAttractionPage planNewAttractionPage = new PlanNewAttractionPage();
+            this.NavigationService.Navigate(planNewAttractionPage);
+        }
+
         private void DoDeleteCurrentRide(object sender, RoutedEventArgs e)
         {
             DeleteCurrentRidePage deleteCurrentRidePage = new DeleteCurrentRidePage();

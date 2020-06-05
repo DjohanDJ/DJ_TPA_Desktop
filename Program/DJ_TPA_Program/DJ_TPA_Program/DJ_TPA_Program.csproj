@@ -82,14 +82,28 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\ActiveUserController.cs" />
+    <Compile Include="Controllers\AttractionCreationController.cs" />
     <Compile Include="Controllers\ConnectionController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\FundRequestController.cs" />
+    <Compile Include="Controllers\IngredientController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="Models\Attraction.cs">
+      <DependentUpon>UnderTheSeaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeaderAttraction.cs">
+      <DependentUpon>UnderTheSeaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeaderIngredient.cs">
+      <DependentUpon>UnderTheSeaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ingredient.cs">
+      <DependentUpon>UnderTheSeaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Views\FactoryMethod\ConstructionPage.cs" />
     <Compile Include="Views\FactoryMethod\CreativePage.cs" />
     <Compile Include="Views\FactoryMethod\DiningPage.cs" />
@@ -157,6 +171,9 @@
     <Compile Include="Views\HRDHomePage.xaml.cs">
       <DependentUpon>HRDHomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\InsertIngredientPage.xaml.cs">
+      <DependentUpon>InsertIngredientPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\KitchenHomePage.xaml.cs">
       <DependentUpon>KitchenHomePage.xaml</DependentUpon>
     </Compile>
@@ -168,6 +185,9 @@
     </Compile>
     <Compile Include="Views\OrderFoodPage.xaml.cs">
       <DependentUpon>OrderFoodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanNewAttractionPage.xaml.cs">
+      <DependentUpon>PlanNewAttractionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RequestGrowthSalaryPage.xaml.cs">
       <DependentUpon>RequestGrowthSalaryPage.xaml</DependentUpon>
@@ -384,6 +404,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\InsertIngredientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\KitchenHomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -397,6 +421,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OrderFoodPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlanNewAttractionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

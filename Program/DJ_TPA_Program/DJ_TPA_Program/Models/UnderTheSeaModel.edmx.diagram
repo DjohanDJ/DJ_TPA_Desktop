@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2222cc1d561c43c9b1dbe50a7fa1ee12" Name="Diagram1" ZoomLevel="194">
+      <Diagram DiagramId="2222cc1d561c43c9b1dbe50a7fa1ee12" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Department" Width="1.5" PointX="5.875" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Employee" Width="1.5" PointX="9.375" PointY="8.25" />
         <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__Employee__Depart__286302EC" />
@@ -51,6 +51,14 @@
         <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__OrderDeta__Order__26CFC035" />
         <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Table" Width="1.5" PointX="37" PointY="11.5" />
         <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__OrderRequ__Table__27C3E46E" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Attraction" Width="1.5" PointX="0.5" PointY="5" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.HeaderAttraction" Width="1.5" PointX="3.75" PointY="9" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderAtt__Attra__4830B400" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderAtt__Emplo__473C8FC7" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.HeaderIngredient" Width="1.5" PointX="13" PointY="5.25" />
+        <EntityTypeShape EntityType="UnderTheSeaDatabaseModel.Ingredient" Width="1.5" PointX="13" PointY="2" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderIng__Emplo__6E565CE8" />
+        <AssociationConnector Association="UnderTheSeaDatabaseModel.FK__HeaderIng__Ingre__6D6238AF" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

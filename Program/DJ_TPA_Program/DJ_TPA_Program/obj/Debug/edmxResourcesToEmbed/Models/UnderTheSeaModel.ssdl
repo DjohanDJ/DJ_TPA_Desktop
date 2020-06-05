@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="UnderTheSeaDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attraction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttractionName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DurationInDays" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+  </EntityType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="Id" />
@@ -62,6 +71,16 @@
     <Property Name="FoodDescription" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FoodPrice" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="HeaderAttraction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="AttractionId" Type="int" Nullable="false" />
+    <Property Name="Area Quantity" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="HeaderConstruction">
     <Key>
       <PropertyRef Name="Id" />
@@ -89,6 +108,15 @@
     <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ResponseStatus" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="PurchaseId" Type="int" />
+  </EntityType>
+  <EntityType Name="HeaderIngredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngredientId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="HeaderMaintenance">
     <Key>
@@ -120,6 +148,13 @@
     <Property Name="ResponseStatus" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="EmployeeId" Type="int" Nullable="false" />
     <Property Name="RideId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngredientName" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ItemPiece">
     <Key>
@@ -272,6 +307,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__HeaderAtt__Attra__4830B400">
+    <End Role="Attraction" Type="Self.Attraction" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderAttraction" Type="Self.HeaderAttraction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attraction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderAttraction">
+        <PropertyRef Name="AttractionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderAtt__Emplo__473C8FC7">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderAttraction" Type="Self.HeaderAttraction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderAttraction">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__HeaderCon__Emplo__19AACF41">
     <End Role="Employee" Type="Self.Employee" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -325,6 +388,34 @@
       </Principal>
       <Dependent Role="HeaderFundRequest">
         <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderIng__Emplo__6E565CE8">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderIngredient" Type="Self.HeaderIngredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderIngredient">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderIng__Ingre__6D6238AF">
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HeaderIngredient" Type="Self.HeaderIngredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderIngredient">
+        <PropertyRef Name="IngredientId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -553,18 +644,22 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="UnderTheSeaDatabaseModelStoreContainer">
+    <EntitySet Name="Attraction" EntityType="Self.Attraction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetailCreation" EntityType="Self.DetailCreation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Firing" EntityType="Self.Firing" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderAttraction" EntityType="Self.HeaderAttraction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HeaderConstruction" EntityType="Self.HeaderConstruction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HeaderCreation" EntityType="Self.HeaderCreation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HeaderFundRequest" EntityType="Self.HeaderFundRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderIngredient" EntityType="Self.HeaderIngredient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HeaderMaintenance" EntityType="Self.HeaderMaintenance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HeaderPurchaseRequest" EntityType="Self.HeaderPurchaseRequest" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HeaderResponse" EntityType="Self.HeaderResponse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemPiece" EntityType="Self.ItemPiece" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LeavingPermission" EntityType="Self.LeavingPermission" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
@@ -591,6 +686,14 @@
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Firing" EntitySet="Firing" />
     </AssociationSet>
+    <AssociationSet Name="FK__HeaderAtt__Attra__4830B400" Association="Self.FK__HeaderAtt__Attra__4830B400">
+      <End Role="Attraction" EntitySet="Attraction" />
+      <End Role="HeaderAttraction" EntitySet="HeaderAttraction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderAtt__Emplo__473C8FC7" Association="Self.FK__HeaderAtt__Emplo__473C8FC7">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderAttraction" EntitySet="HeaderAttraction" />
+    </AssociationSet>
     <AssociationSet Name="FK__HeaderCon__Emplo__19AACF41" Association="Self.FK__HeaderCon__Emplo__19AACF41">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="HeaderConstruction" EntitySet="HeaderConstruction" />
@@ -606,6 +709,14 @@
     <AssociationSet Name="FK__HeaderFun__Emplo__67DE6983" Association="Self.FK__HeaderFun__Emplo__67DE6983">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="HeaderFundRequest" EntitySet="HeaderFundRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderIng__Emplo__6E565CE8" Association="Self.FK__HeaderIng__Emplo__6E565CE8">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderIngredient" EntitySet="HeaderIngredient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderIng__Ingre__6D6238AF" Association="Self.FK__HeaderIng__Ingre__6D6238AF">
+      <End Role="Ingredient" EntitySet="Ingredient" />
+      <End Role="HeaderIngredient" EntitySet="HeaderIngredient" />
     </AssociationSet>
     <AssociationSet Name="FK__HeaderMai__Emplo__2EA5EC27" Association="Self.FK__HeaderMai__Emplo__2EA5EC27">
       <End Role="Employee" EntitySet="Employee" />

@@ -28,6 +28,8 @@ namespace DJ_TPA_Program.Models
             this.LeavingPermissions = new HashSet<LeavingPermission>();
             this.ResignRequests = new HashSet<ResignRequest>();
             this.OrderRequests = new HashSet<OrderRequest>();
+            this.HeaderAttractions = new HashSet<HeaderAttraction>();
+            this.HeaderIngredients = new HashSet<HeaderIngredient>();
         }
     
         public int Id { get; set; }
@@ -65,5 +67,9 @@ namespace DJ_TPA_Program.Models
         public virtual ICollection<ResignRequest> ResignRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderRequest> OrderRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HeaderAttraction> HeaderAttractions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HeaderIngredient> HeaderIngredients { get; set; }
     }
 }

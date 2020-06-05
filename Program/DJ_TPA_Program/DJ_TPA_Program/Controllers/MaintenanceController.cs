@@ -28,7 +28,7 @@ namespace DJ_TPA_Program.Controllers
             headerMaintenance = ConnectionController.GetInstance().HeaderMaintenances.Where(x => x.Id.Equals(id)).FirstOrDefault();
             Ride ride;
             ride = RideCreationController.DoSearchRide(headerMaintenance.RideId);
-
+ 
             if (ride.RideMaintainStatus.Equals("Yes"))
             {
                 ride.RideMaintainStatus = "No";

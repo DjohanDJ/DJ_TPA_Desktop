@@ -54,6 +54,11 @@
                 Grid.Column="2" Grid.Row="4" Padding="5"
                 Margin="0,0,15,15" Click="DoViewVisitorOrder" />
 
+        <Button x:Name="changeCurrentRideButtona" Content="Insert Ingredient" 
+                Grid.Column="3" Grid.Row="4" Padding="5"
+                Margin="0,0,15,15" Click="DoInsertIngredient" />
+        
+        
         <!--Plan New Ride-->
 
         <Button x:Name="planaNewRideButton" Content="Create Leaving Permission" 
